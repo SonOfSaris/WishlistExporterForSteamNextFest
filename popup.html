@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root { color-scheme: dark; }
+  body {
+    width: 320px;
+    margin: 0;
+    padding: 14px 16px 16px;
+    font: 13px/1.45 "Segoe UI", system-ui, sans-serif;
+    background: #1b2838;
+    color: #c7d5e0;
+  }
+  h1 { font-size: 14px; margin: 0 0 2px; color: #fff; }
+  .sub { font-size: 11px; color: #8f98a0; margin-bottom: 12px; }
+  .opts { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+  label { display: flex; align-items: center; gap: 7px; cursor: pointer; }
+  button {
+    width: 100%; padding: 9px; border: 0; border-radius: 3px; cursor: pointer;
+    font-size: 13px; font-weight: 600; color: #fff;
+    background: linear-gradient(90deg,#06bfff,#2d73ff);
+  }
+  button:disabled { opacity: .5; cursor: default; }
+  .status { font-size: 11px; color: #8f98a0; min-height: 14px; margin-top: 10px; }
+  .err { color: #ff7b72; }
+  .extra { font-size: 11px; color: #8f98a0; margin-bottom: 12px; }
+  .extra a, .status a { color: #66c0f4; }
+  .dl {
+    display: none; margin-top: 10px; text-align: center; padding: 8px; border-radius: 3px;
+    text-decoration: none; font-weight: 600; font-size: 12px; color: #cfe; background: #2a475e;
+  }
+</style>
+</head>
+<body>
+  <h1>Wishlist &times; Next Fest</h1>
+  <div class="sub" id="fest">Exports your Steam wishlist as a CSV for Google Sheets</div>
+
+  <div class="opts">
+    <label><input type="checkbox" id="onlyFest"> Only games in Next Fest</label>
+  </div>
+
+  <div class="extra">
+    <a href="#" id="enrichPick" title="Optional. Pick a Next Fest Demo Exporter file (full or slim JSON) and/or ai_categories.json to add AI-disclosure, AI-category and studio columns. Remembered until cleared.">Add AI / studio data from Next Fest export files…</a>
+    <input type="file" id="enrichFile" accept=".json,application/json" multiple hidden>
+    <div id="enrichInfo"></div>
+  </div>
+
+  <button id="go">Export wishlist CSV</button>
+  <div class="status" id="status"></div>
+  <a class="dl" id="dl" href="#">Download CSV</a>
+
+  <script src="popup.js"></script>
+</body>
+</html>
